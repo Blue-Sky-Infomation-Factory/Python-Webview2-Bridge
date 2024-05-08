@@ -1,5 +1,11 @@
-﻿namespace BSIF.Python_WebView2_Bridge;
+﻿namespace BSIF.WebView2Bridge;
 
+using System.Runtime.InteropServices;
+using Python.Runtime;
+using Microsoft.VisualBasic;
+
+[ClassInterface(ClassInterfaceType.AutoDual)]
+[ComVisible(true)]
 public class WebView2Bridge(PyObject pythonApi)
 {
 	private readonly PyObject pythonApi = pythonApi;

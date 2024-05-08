@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Python-WebView2-Bridge", "Python-WebView2-Bridge\Python-WebView2-Bridge.csproj", "{88EE37C2-0BA5-47CD-8C50-3652F4D93987}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSIF.WebView2Bridge", "BSIF.WebView2Bridge\BSIF.WebView2Bridge.csproj", "{A185B92A-B305-4F91-A315-9844E9F7141E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{88EE37C2-0BA5-47CD-8C50-3652F4D93987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88EE37C2-0BA5-47CD-8C50-3652F4D93987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88EE37C2-0BA5-47CD-8C50-3652F4D93987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88EE37C2-0BA5-47CD-8C50-3652F4D93987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A185B92A-B305-4F91-A315-9844E9F7141E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A185B92A-B305-4F91-A315-9844E9F7141E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A185B92A-B305-4F91-A315-9844E9F7141E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A185B92A-B305-4F91-A315-9844E9F7141E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
