@@ -1,28 +1,17 @@
 ﻿namespace BSIF.WebView2Bridge;
 
 using System.Runtime.InteropServices;
-using Python.Runtime;
-using Microsoft.VisualBasic;
+using System.Collections.ObjectModel;
 
 [ClassInterface(ClassInterfaceType.AutoDual)]
 [ComVisible(true)]
-public class WebView2Bridge(PyObject pythonApi)
+public class WebView2Bridge(WebView2Bridge.Caller pythonCaller, string[] methodsName)
 {
-	private readonly PyObject pythonApi = pythonApi;
-
-	public dynamic Call(string methodName, object[] args)
+	public delegate string Caller(string methodName, string argsJson);
+	private readonly Caller caller = pythonCaller;
+	public readonly ReadOnlyCollection<string>? methodsName = new(methodsName);
+	public string Call(string methodName, string argsJson)
 	{
-		PyObject result = pythonApi.InvokeMethod(methodName, args.Select(item => item.ToPython()).ToArray());
-		return result;
+		return caller.Invoke(methodName, argsJson);
 	}
-
-	public string TestJsType(object? any)
-	{
-		
-		Type type = Type.GetTypeFromHandle(Type.GetTypeHandle(any));
-		inspect = any;
-		return type.IsCOMObject ? "COM Object" : type.Name;
-	}
-
-	public object? inspect = null;
 }
