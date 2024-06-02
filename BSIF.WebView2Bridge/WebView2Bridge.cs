@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 
 [ClassInterface(ClassInterfaceType.AutoDual)]
 [ComVisible(true)]
-public class WebView2Bridge(WebView2Bridge.Caller pythonCaller, string[] methodNames)
+public class WebView2Bridge(WebView2Bridge.SyncCaller pythonSyncCaller, string[] methodNames)
 {
-	public delegate string Caller(string methodName, string argsJson);
-	private readonly Caller caller = pythonCaller;
+	public delegate string SyncCaller(string methodName, string argsJson);
+	private readonly SyncCaller syncCaller = pythonSyncCaller;
 	public readonly string[] methodNames = methodNames;
-	public string Call(string methodName, string argsJson)
+	public string SyncCall(string methodName, string argsJson)
 	{
-		return caller.Invoke(methodName, argsJson);
+		return syncCaller.Invoke(methodName, argsJson);
 	}
 }
