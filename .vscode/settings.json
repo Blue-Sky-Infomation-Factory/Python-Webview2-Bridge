@@ -1,0 +1,5 @@
+{
+	"python.analysis.extraPaths": [
+		"..\\pythonnet-stubs\\pythonnet_stubs"
+	]
+}
