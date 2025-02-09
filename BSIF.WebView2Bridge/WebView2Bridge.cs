@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [ComVisible(true)]
 public class WebView2Bridge(WebView2Bridge.SyncCaller syncCaller, WebView2Bridge.AsyncCaller asyncCaller, string[] methodNames)
 {
-	public readonly string[] methodNames = methodNames;
+	public readonly string[] MethodNames = methodNames;
 	public delegate string SyncCaller(string methodName, string argsJson);
 	private readonly SyncCaller syncCaller = syncCaller;
 	public string SyncCall(string methodName, string argsJson)
@@ -15,7 +15,8 @@ public class WebView2Bridge(WebView2Bridge.SyncCaller syncCaller, WebView2Bridge
 	}
 	public delegate void AsyncCaller(string methodName, string argsJson, TaskCompletionSource<string> asyncObject);
 	private readonly AsyncCaller asyncCaller = asyncCaller;
-	public Task<string> AsyncCall(string methodName, string argsJson){
+	public Task<string> AsyncCall(string methodName, string argsJson)
+	{
 		TaskCompletionSource<string> taskSource = new();
 		asyncCaller.Invoke(methodName, argsJson, taskSource);
 		return taskSource.Task;
