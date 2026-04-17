@@ -1,5 +1,6 @@
 ﻿namespace test;
 
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Web.WebView2.Core;
@@ -39,13 +40,14 @@ public class Program
 		App.Run(mainWindow);
 	}
 
-	private static async void OnWebViewReadyAsync(object webview, CoreWebView2InitializationCompletedEventArgs args)
+	private static async void OnWebViewReadyAsync(object? webview, CoreWebView2InitializationCompletedEventArgs args)
 	{
 		if (!args.IsSuccess)
 		{
 			Console.Error.Write(args.InitializationException);
 			return;
 		}
+		Debug.Assert(webview is WebView2);
 		CoreWebView2 core = ((WebView2)webview).CoreWebView2;
 		CoreWebView2Settings settings = core.Settings;
 		settings.AreBrowserAcceleratorKeysEnabled = settings.AreDefaultContextMenusEnabled = settings.AreDevToolsEnabled = true;
@@ -56,7 +58,7 @@ public class Program
 		settings.IsStatusBarEnabled = false;
 		settings.IsSwipeNavigationEnabled = false;
 		settings.IsZoomControlEnabled = false;
-		// core.AddHostObjectToScript("bridge", new ApiTest());
+		core.AddHostObjectToScript("bridge", new ExampleBridge());
 		core.RemoveScriptToExecuteOnDocumentCreated("1");
 		await core.AddScriptToExecuteOnDocumentCreatedAsync("console.log('script execute')");
 		core.OpenDevToolsWindow();
